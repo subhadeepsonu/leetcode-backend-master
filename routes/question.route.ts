@@ -1,0 +1,10 @@
+import { Router } from "express";
+import { adminMiddleware } from "../middleware/admin.middleware";
+import { userMiddleware } from "../middleware/user.middleware";
+import { AddQuestion, DeleteQuestion, EditQuestion, GetQuestions, GetSpcificQuestion } from "../controllers/question.controller";
+export const questionRouter = Router();
+questionRouter.post("/question", adminMiddleware, AddQuestion);
+questionRouter.get("/question", userMiddleware, GetQuestions);
+questionRouter.get("/question/:id", userMiddleware, GetSpcificQuestion);
+questionRouter.put("/question", adminMiddleware, EditQuestion);
+questionRouter.delete("/question/:id", adminMiddleware, DeleteQuestion);
