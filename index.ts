@@ -5,7 +5,7 @@ import { questionRouter } from "./routes/question.route"
 import { submissionRouter } from "./routes/submission.route"
 import { testCaseRouter } from "./routes/testcase.route"
 import { createClient } from 'redis';
-
+import { Request, Response } from 'express';
 const redisClient = createClient({
     username: 'default',
     password: process.env.password,
@@ -29,7 +29,12 @@ app.use(cors({
     origin: "*"
 }))
 
-
+app.get("/", (req: Request, res: Response) => {
+    res.json({
+        success: true,
+        message: "health check"
+    })
+})
 app.use("/api/v1", userRouter)
 app.use("/api/v1", adminRouter)
 app.use("/api/v1", questionRouter)
