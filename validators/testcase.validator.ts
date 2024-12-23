@@ -1,8 +1,8 @@
 import z from 'zod';
 export const addTestCaseValidator = z.object({
-    input: z.string(),
+    input: z.any(),
     output: z.string(),
-    questionId: z.string()
+    questionId: z.string().uuid()
 });
 export const updateTestCaseValidator = z.object({
     input: z.string(),

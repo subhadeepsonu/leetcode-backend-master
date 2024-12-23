@@ -24,16 +24,33 @@ model admin {
 model questions {
   id String @id @default(uuid())
   question String
+  description String @default("") 
+  difficulty difficulty @default(easy)
+  sampleInput1 String @default("")
+  sampleInput2 String @default("")
+  sampleOutput1 String @default("")
+  sampleOutput2 String @default("")
+  tags tags[] 
   submissions submissions[]
-  answers testcases[]
+  testcases testcases[]
+}
+model tags {
+  id String @id @default(uuid())
+  name String
+  question questions[]
 }
 
+enum difficulty {
+  easy
+  medium
+  hard
+}
 model testcases {
   id String @id @default(uuid())
   input String
   output String
   questionId String
-  question questions @relation(fields: [questionId], references: [id])
+  question questions @relation(fields: [questionId], references: [id],onDelete: Cascade) 
 }
 
 model submissions {
@@ -48,7 +65,7 @@ model submissions {
   correct Boolean?
   completed Boolean @default(false) 
   createdAt DateTime @default(now())
-  question questions @relation(fields: [questionId], references: [id])
+  question questions @relation(fields: [questionId], references: [id],onDelete: Cascade)
   user user @relation(fields: [userId], references: [id])
 }
 

@@ -5,6 +5,7 @@ export const addSubmissionValidator = z.object({
     questionId: z.string().uuid(),
 })
 export const editSubmissionValidator = z.object({
+    userId: z.string(),
     passedcases: z.number(),
     failedcases: z.number(),
     totalcases: z.number(),

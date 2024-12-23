@@ -34,7 +34,7 @@ export async function AdminLogin(req: Request, res: Response) {
             });
             return
         }
-        const token = jwt.sign({ id: admin.id }, process.env.JWT_SECRET!);
+        const token = jwt.sign({ id: admin.id, role: "admin" }, process.env.JWT_SECRET!);
         res.status(200).json({
             success: true,
             message: "Admin logged in successfully",
@@ -80,11 +80,10 @@ export async function Adminregister(req: Request, res: Response) {
                 password: hashedPassword
             }
         });
-        const token = jwt.sign({ id: admin.id }, process.env.JWT_SECRET!);
+
         res.status(200).json({
             success: true,
-            message: "Admin registered successfully",
-            data: token
+            message: "Admin registered successfully"
         });
     } catch (error) {
         res.status(500).json({
