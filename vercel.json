@@ -5,17 +5,14 @@
       "src": "index.ts",
       "use": "@vercel/node",
       "config": {
-        "maxDuration": 10,
-        "prisma": {
-          "generate": true
-        }
+        "maxDuration": 10
       }
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/index.ts"
+      "dest": "/"
     }
   ]
 }
