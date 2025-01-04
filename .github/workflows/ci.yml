@@ -15,9 +15,7 @@ jobs:
         with:
           node-version: '20'
       - name: Install dependencies
-        run: npm install
-      - name : Install typescript
-        run: npm install typescript
+        run: install
       - name: Generate Prisma Client
         run: npx prisma generate
       - name: Build
