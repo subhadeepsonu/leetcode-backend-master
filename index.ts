@@ -29,10 +29,10 @@ app.use(cors({
     origin: "*"
 }))
 
-app.get("/", (req: Request, res: Response) => {
+app.get("/ping", (req: Request, res: Response) => {
     res.json({
         success: true,
-        message: "health check"
+        message: "pong"
     })
 })
 app.use("/api/v1", userRouter)
