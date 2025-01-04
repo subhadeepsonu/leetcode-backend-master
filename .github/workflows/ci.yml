@@ -14,14 +14,13 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '20'
-      - name: Clear npm cache
-        run: npm cache clean --force  # Clear npm cache
-      - name: Delete node_modules
-        run: rm -rf node_modules  # Remove node_modules directory
       - name: Install dependencies
         run: npm install
       - name: Install TypeScript
         run: npm install typescript --save-dev
+      - name: Check TypeScript version
+        run: npx tsc --version
+
       - name: Generate Prisma Client
         run: npx prisma generate
       - name: Build
