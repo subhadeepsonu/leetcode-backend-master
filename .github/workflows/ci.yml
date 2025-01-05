@@ -18,6 +18,5 @@ jobs:
         run: npm install
       - name: Install TypeScript
         run: npm install -g typescript 
-
       - name: Generate Prisma Client
         run: npx prisma generate

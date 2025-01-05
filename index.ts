@@ -32,7 +32,7 @@ app.use(cors({
 app.get("/health", (req: Request, res: Response) => {
     res.json({
         success: true,
-        message: "good"
+        message: "good to go"
     })
 })
 app.use("/api/v1", userRouter)
