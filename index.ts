@@ -6,6 +6,7 @@ import { submissionRouter } from "./routes/submission.route"
 import { testCaseRouter } from "./routes/testcase.route"
 import { createClient } from 'redis';
 import { Request, Response } from 'express';
+import cors from "cors"
 const redisClient = createClient({
     username: 'default',
     password: process.env.password,
@@ -19,12 +20,13 @@ redisClient.on('error', err => console.log('Redis Client Error', err));
 
 redisClient.connect();
 
-import cors from "cors"
+
 const app = express()
-app.use(express.json())
 app.use(cors({
     origin: ["https://leetcode-clone-user-website.vercel.app"]
 }))
+app.use(express.json())
+
 
 app.get("/ping", (req: Request, res: Response) => {
     res.json({
