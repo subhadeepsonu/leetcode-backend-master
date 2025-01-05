@@ -25,7 +25,7 @@ const app = express()
 
 
 app.use(cors({
-    origin: "https://leetcode-clone-user-website.vercel.app"
+    origin: "https://meetcode-user.subhadeep.xyz"
 }));
 app.use(express.json())
 
