@@ -23,7 +23,8 @@ redisClient.connect();
 
 const app = express()
 app.use(cors({
-    origin: ["https://leetcode-clone-user-website.vercel.app"]
+    origin: ["https://leetcode-clone-user-website.vercel.app"],
+    credentials: true
 }))
 app.use(express.json())
 
