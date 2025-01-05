@@ -32,12 +32,12 @@ app.use(cors({
     origin: "*"
 }));
 app.use(express.json())
-
+app.options('*', cors());
 
 app.get("/ping", (req: Request, res: Response) => {
     res.json({
         success: true,
-        message: "pong"
+        message: "pong 2"
     })
 })
 app.use("/api/v1", userRouter)
