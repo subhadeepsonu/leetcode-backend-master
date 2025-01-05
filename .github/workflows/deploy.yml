@@ -35,6 +35,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: 22
           script: |
+            echo "Connection successful!"
             docker pull subhadeepthandaka/leetcode-master:latest
             docker stop leetcode-master || true
             docker rm leetcode-master || true
