@@ -18,8 +18,7 @@ RUN npm install -g typescript
 # Generate Prisma client
 RUN npx prisma generate
 
-# Compile TypeScript files using tsc from node_modules/.bin
-RUN npx tsc -b
+
 
 # Expose the port the app will run on
 EXPOSE 3000
