@@ -22,9 +22,7 @@ redisClient.connect();
 import cors from "cors"
 const app = express()
 app.use(express.json())
-app.use(cors({
-    origin: "*"
-}))
+app.use(cors())
 
 app.get("/ping", (req: Request, res: Response) => {
     res.json({
