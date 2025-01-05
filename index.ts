@@ -22,7 +22,9 @@ redisClient.connect();
 import cors from "cors"
 const app = express()
 app.use(express.json())
-app.use(cors())
+app.use(cors({
+    origin: ["https://leetcode-clone-user-website.vercel.app"]
+}))
 
 app.get("/ping", (req: Request, res: Response) => {
     res.json({
