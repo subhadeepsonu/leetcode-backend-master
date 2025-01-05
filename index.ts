@@ -29,10 +29,10 @@ app.use(cors({
 }));
 app.use(express.json())
 
-app.get("/ping", (req: Request, res: Response) => {
+app.get("/", (req: Request, res: Response) => {
     res.json({
         success: true,
-        message: "pong 2"
+        message: "health check"
     })
 })
 app.use("/api/v1", userRouter)
