@@ -19,14 +19,11 @@ redisClient.on('error', err => console.log('Redis Client Error', err));
 
 redisClient.connect();
 
-
-
-
 import cors from "cors"
 const app = express()
 app.use(express.json())
 app.use(cors({
-    origin: ["https://leetcode-clone-user-website.vercel.app"]
+    origin: "*"
 }))
 
 app.get("/ping", (req: Request, res: Response) => {
