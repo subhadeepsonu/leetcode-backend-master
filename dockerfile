@@ -14,6 +14,9 @@ RUN npm install
 # Generate Prisma client
 RUN npx prisma generate
 
+RUN npm install -g typescript
+ 
+RUN pwd
 # Copy the rest of the application code
 
 
