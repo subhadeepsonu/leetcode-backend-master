@@ -22,25 +22,12 @@ redisClient.connect();
 
 
 const app = express()
-const allowedOrigins = [
-    'http://localhost:5173',  // Your frontend URL during development
-    'https://leetcode-clone-user-website.vercel.app',  // Your production frontend domain
-];
 
 
 app.use(cors({
-    origin: (origin, callback) => {
-        if (!origin || allowedOrigins.includes(origin)) {
-            callback(null, true);
-        } else {
-            callback(new Error('Not allowed by CORS'));
-        }
-    },
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
+    origin: "https://leetcode-clone-user-website.vercel.app"
 }));
 app.use(express.json())
-app.options('*', cors());
 
 app.get("/ping", (req: Request, res: Response) => {
     res.json({
