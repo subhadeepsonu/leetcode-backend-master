@@ -24,8 +24,11 @@ redisClient.connect();
 const app = express()
 
 
+// app.use(cors({
+//     origin: "https://meetcode-user.subhadeep.xyz"
+// }));
 app.use(cors({
-    origin: "https://meetcode-user.subhadeep.xyz"
+    origin: "http://localhost:5173"
 }));
 app.use(express.json())
 

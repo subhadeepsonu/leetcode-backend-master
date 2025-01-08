@@ -127,6 +127,25 @@ export async function UserProfile(req: Request, res: Response) {
                 correct: true
             }
         })
+        const activity = await prisma.submissions.groupBy({
+            by: ["createdAt"],
+            where: {
+                userId: req.body.id,
+                createdAt: {
+                    gte: new Date(new Date().getTime() - 365 * 24 * 60 * 60 * 1000)
+                }
+            }
+        })
+
+        const frequencyMap: any = {};
+
+        activity.forEach(item => {
+            const date = item.createdAt.toISOString().split('T')[0]; // Extract only the date part (YYYY-MM-DD)
+            frequencyMap[date] = (frequencyMap[date] || 0) + 1; // Increment count
+        });
+
+        // Step 2: Transform the frequency map into the required format
+        const values = Object.entries(frequencyMap).map(([date, count]) => ({ date, count }));
         const recent = await prisma.submissions.findMany({
             where: {
                 userId: req.body.id,
@@ -150,7 +169,8 @@ export async function UserProfile(req: Request, res: Response) {
                 submissions: submissions.length,
                 correct: correct.length,
                 correctsubmissions: correctsubmissions.length,
-                recent
+                recent,
+                values
             },
 
         })
