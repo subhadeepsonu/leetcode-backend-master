@@ -25,7 +25,7 @@ const app = express()
 
 
 app.use(cors({
-    origin: "https://meetcode-user.subhadeep.xyz"
+    origin: ["https://meetcode-user.subhadeep.xyz", "http://localhost:5173"]
 }));
 app.use(express.json())
 
