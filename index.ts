@@ -35,7 +35,7 @@ app.use(express.json())
 app.get("/", (req: Request, res: Response) => {
     res.json({
         success: true,
-        message: "health check"
+        message: "ping pong"
     })
 })
 app.use("/api/v1", userRouter)
